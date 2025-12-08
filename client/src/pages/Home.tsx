@@ -67,10 +67,10 @@ export default function Home() {
         <div className="flex flex-col items-center text-center">
           <h1 className="text-xl font-bold tracking-tight text-white drop-shadow-md mb-1">True Pay</h1>
           <p className="text-xs text-primary font-semibold tracking-wide leading-tight max-w-[240px] drop-shadow-[0_0_10px_rgba(129,140,248,0.6)]">
-            the card that never declines
+            The card that never declines
           </p>
           <p className="text-xs text-primary font-semibold tracking-wide leading-tight max-w-[240px] drop-shadow-[0_0_10px_rgba(129,140,248,0.6)]">
-            the bank that never freezes
+            The bank that never freezes
           </p>
         </div>
         <div className="flex items-center gap-1">
