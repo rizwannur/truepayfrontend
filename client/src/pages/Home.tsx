@@ -36,6 +36,7 @@ export default function Home() {
   const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }));
   const [titleSuffix, setTitleSuffix] = useState("Pay");
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isHeaderExpanded, setIsHeaderExpanded] = useState(true);
   const [, setLocation] = useLocation();
 
   useEffect(() => {
@@ -76,12 +77,15 @@ export default function Home() {
       </div>
 
       {/* Header */}
-      <header className="sticky top-[44px] z-50 bg-black/80 backdrop-blur-lg border-b border-white/5 px-4 py-3 flex items-center justify-between">
+      <header className="sticky top-[44px] z-50 bg-black/80 backdrop-blur-lg border-b border-white/5 px-4 py-3 flex items-center justify-between transition-all duration-300">
         <Button variant="ghost" size="icon" className="rounded-full text-muted-foreground hover:text-white">
           <User className="w-6 h-6" />
         </Button>
-        <div className="flex flex-col items-center text-center">
-          <div className="flex items-center justify-center mb-1">
+        <div 
+          className="flex flex-col items-center text-center cursor-pointer group"
+          onClick={() => setIsHeaderExpanded(!isHeaderExpanded)}
+        >
+          <div className="flex items-center justify-center">
             <h1 className="text-xl font-bold tracking-tight text-white drop-shadow-md text-right">
               True
             </h1>
@@ -96,12 +100,21 @@ export default function Home() {
               </span>
             </div>
           </div>
-          <p className="text-xs text-primary font-semibold tracking-wide leading-tight max-w-[240px] drop-shadow-[0_0_10px_rgba(129,140,248,0.6)]">
-            The card that never declines
-          </p>
-          <p className="text-xs text-primary font-semibold tracking-wide leading-tight max-w-[240px] drop-shadow-[0_0_10px_rgba(129,140,248,0.6)]">
-            The bank that never freezes
-          </p>
+          <div className={cn(
+            "overflow-hidden transition-all duration-300 ease-in-out",
+            isHeaderExpanded ? "max-h-[100px] opacity-100 mt-1" : "max-h-0 opacity-0 mt-0"
+          )}>
+            <p className="text-xs text-primary font-semibold tracking-wide leading-tight max-w-[240px] drop-shadow-[0_0_10px_rgba(129,140,248,0.6)]">
+              The card that never declines
+            </p>
+            <p className="text-xs text-primary font-semibold tracking-wide leading-tight max-w-[240px] drop-shadow-[0_0_10px_rgba(129,140,248,0.6)]">
+              The bank that never freezes
+            </p>
+          </div>
+          <div className={cn(
+            "h-1 w-8 bg-white/10 rounded-full mt-1 transition-all duration-300 group-hover:bg-white/20",
+            isHeaderExpanded ? "opacity-0 h-0" : "opacity-100"
+          )} />
         </div>
         <div className="flex items-center gap-1">
           <Button variant="ghost" size="icon" className="rounded-full text-muted-foreground hover:text-white">
