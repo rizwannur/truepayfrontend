@@ -100,10 +100,47 @@ body {
   scrollbar-width: none;  /* Firefox */
 }
 
+@keyframes shine-sweep {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(30deg);
+  }
+  100% {
+    transform: translateX(200%) translateY(200%) rotate(30deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.25; transform: scale(1.1); }
+}
+
 .bg-obsidian-shiny {
   background-color: #000000;
   background-image: 
     radial-gradient(circle at 50% 0%, hsl(239 84% 67% / 0.15) 0%, transparent 50%),
     radial-gradient(circle at 85% 30%, hsl(280 65% 60% / 0.1) 0%, transparent 50%),
     radial-gradient(circle at 15% 70%, hsl(239 84% 67% / 0.1) 0%, transparent 50%);
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-obsidian-shiny::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.0) 40%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.0) 60%,
+    transparent 100%
+  );
+  transform: rotate(30deg);
+  animation: shine-sweep 7s infinite linear;
+  pointer-events: none;
+  z-index: 1;
 }
