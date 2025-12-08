@@ -77,18 +77,18 @@ export default function Home() {
         <main className="px-4 pt-4 space-y-6">
           
           {/* Verify Identity Card */}
-          <Card className="bg-gradient-to-br from-[#1c1c1e] to-[#09090b] border border-white/5 p-4 flex items-center justify-between rounded-2xl shadow-[4px_4px_10px_rgba(0,0,0,0.5),-1px_-1px_2px_rgba(255,255,255,0.05)] relative overflow-hidden group">
+          <Card className="bg-gradient-to-br from-[#1c1c1e] to-[#09090b] border border-white/5 p-4 flex items-center justify-between rounded-2xl shadow-[0_0_20px_-5px_rgba(129,140,248,0.15),4px_4px_10px_rgba(0,0,0,0.5),-1px_-1px_2px_rgba(255,255,255,0.05)] relative overflow-hidden group">
             <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="flex items-center gap-3 relative z-10">
-              <div className="w-10 h-10 rounded-full bg-[#2c2c2e] flex items-center justify-center text-blue-400 shadow-inner border border-white/5">
-                <ShieldCheck className="w-5 h-5 drop-shadow-md" />
+              <div className="w-10 h-10 rounded-full bg-[#2c2c2e] flex items-center justify-center text-blue-400 shadow-[0_0_10px_rgba(96,165,250,0.3)] border border-white/5">
+                <ShieldCheck className="w-5 h-5 drop-shadow-[0_0_5px_rgba(96,165,250,0.5)]" />
               </div>
               <div>
                 <div className="font-semibold text-sm drop-shadow-sm">Verify your identity</div>
-                <div className="text-xs text-red-400 font-medium drop-shadow-sm">Unverified</div>
+                <div className="text-xs text-red-400 font-medium drop-shadow-[0_0_5px_rgba(248,113,113,0.3)]">Unverified</div>
               </div>
             </div>
-            <Button variant="outline" className="h-8 px-4 border-primary/50 text-primary hover:bg-primary/10 hover:text-primary rounded-lg text-xs font-semibold relative z-10 shadow-[0_0_10px_rgba(var(--primary),0.2)]">
+            <Button variant="outline" className="h-8 px-4 border-primary/50 text-primary hover:bg-primary/10 hover:text-primary rounded-lg text-xs font-semibold relative z-10 shadow-[0_0_15px_rgba(129,140,248,0.3)]">
               Verify
             </Button>
           </Card>
@@ -205,30 +205,30 @@ function QuickAction({
     <div className="flex flex-col items-center gap-2 group cursor-pointer active:opacity-70 transition-opacity">
       <div className="relative">
         <div className={cn(
-          "w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-200 border",
+          "w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 border",
           variant === "primary" 
-            ? "bg-gradient-to-br from-primary to-primary/80 text-white border-white/20 shadow-[0_0_20px_-5px_var(--color-primary)]" 
-            : "bg-gradient-to-br from-[#27272a] to-[#18181b] text-white border-white/10 shadow-[4px_4px_10px_rgba(0,0,0,0.5),-1px_-1px_2px_rgba(255,255,255,0.05)] hover:border-white/20"
+            ? "bg-gradient-to-br from-primary to-primary/80 text-white border-white/20 shadow-[0_0_30px_-5px_var(--color-primary)]" 
+            : "bg-gradient-to-br from-[#27272a] to-[#18181b] text-white border-white/10 shadow-[0_0_15px_-3px_rgba(129,140,248,0.2),4px_4px_10px_rgba(0,0,0,0.5),-1px_-1px_2px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_-5px_rgba(129,140,248,0.4)] hover:border-primary/30"
         )}>
-          <Icon className="w-6 h-6 drop-shadow-md" strokeWidth={2} />
+          <Icon className="w-6 h-6 drop-shadow-[0_0_8px_rgba(129,140,248,0.5)]" strokeWidth={2} />
         </div>
         {badge && (
-          <div className="absolute -top-2 -right-2 bg-primary/20 text-[#a5b4fc] text-[10px] font-bold px-1.5 py-0.5 rounded-md border border-[#a5b4fc]/20 backdrop-blur-sm shadow-[0_0_10px_rgba(165,180,252,0.2)]">
+          <div className="absolute -top-2 -right-2 bg-primary/20 text-[#a5b4fc] text-[10px] font-bold px-1.5 py-0.5 rounded-md border border-[#a5b4fc]/20 backdrop-blur-sm shadow-[0_0_10px_rgba(165,180,252,0.4)]">
             {badge}
           </div>
         )}
       </div>
-      <span className="text-xs font-medium text-muted-foreground group-hover:text-white transition-colors">{label}</span>
+      <span className="text-xs font-medium text-muted-foreground group-hover:text-primary transition-colors drop-shadow-[0_0_8px_rgba(0,0,0,0.8)]">{label}</span>
     </div>
   );
 }
 
 function Banner({ icon: Icon, label, action }: { icon: any, label: string, action: React.ReactNode }) {
   return (
-    <Card className="bg-gradient-to-br from-[#27272a] to-[#18181b] border border-white/5 p-4 flex items-center justify-between rounded-xl active:scale-[0.98] transition-transform cursor-pointer hover:border-white/10 shadow-[4px_4px_10px_rgba(0,0,0,0.5),-1px_-1px_2px_rgba(255,255,255,0.05)]">
+    <Card className="bg-gradient-to-br from-[#27272a] to-[#18181b] border border-white/5 p-4 flex items-center justify-between rounded-xl active:scale-[0.98] transition-all duration-500 cursor-pointer hover:border-primary/30 shadow-[0_0_15px_-3px_rgba(129,140,248,0.15),4px_4px_10px_rgba(0,0,0,0.5),-1px_-1px_2px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_-5px_rgba(129,140,248,0.3)]">
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 rounded-lg bg-[#2c2c2e]/50 flex items-center justify-center text-primary shadow-inner">
-          <Icon className="w-5 h-5 drop-shadow" />
+        <div className="w-8 h-8 rounded-lg bg-[#2c2c2e]/50 flex items-center justify-center text-primary shadow-[0_0_10px_rgba(129,140,248,0.2)] border border-white/5">
+          <Icon className="w-5 h-5 drop-shadow-[0_0_5px_rgba(129,140,248,0.5)]" />
         </div>
         <span className="text-sm font-medium text-white drop-shadow-sm">{label}</span>
       </div>
@@ -241,17 +241,17 @@ function Banner({ icon: Icon, label, action }: { icon: any, label: string, actio
 
 function FiatCard({ symbol, currency }: { symbol: string, currency: string }) {
   return (
-    <Card className="bg-gradient-to-br from-[#27272a] to-[#18181b] border border-white/5 p-4 rounded-xl flex flex-col justify-between h-32 active:scale-[0.98] transition-transform cursor-pointer hover:border-white/10 group shadow-[4px_4px_10px_rgba(0,0,0,0.5),-1px_-1px_2px_rgba(255,255,255,0.05)] relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full blur-2xl -mr-12 -mt-12 pointer-events-none group-hover:bg-white/10 transition-colors" />
+    <Card className="bg-gradient-to-br from-[#27272a] to-[#18181b] border border-white/5 p-4 rounded-xl flex flex-col justify-between h-32 active:scale-[0.98] transition-all duration-500 cursor-pointer hover:border-primary/30 group shadow-[0_0_15px_-3px_rgba(129,140,248,0.15),4px_4px_10px_rgba(0,0,0,0.5),-1px_-1px_2px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_-5px_rgba(129,140,248,0.3)] relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl -mr-12 -mt-12 pointer-events-none group-hover:bg-primary/20 transition-colors" />
       
       <div className="flex items-center gap-3 relative z-10">
-        <div className="w-8 h-8 rounded-full bg-[#2c2c2e] flex items-center justify-center text-white font-serif italic text-lg shadow-inner border border-white/5">
+        <div className="w-8 h-8 rounded-full bg-[#2c2c2e] flex items-center justify-center text-white font-serif italic text-lg shadow-[0_0_10px_rgba(255,255,255,0.1)] border border-white/5">
           {symbol}
         </div>
-        <span className="font-bold text-lg drop-shadow-sm">{currency}</span>
+        <span className="font-bold text-lg drop-shadow-[0_0_10px_rgba(129,140,248,0.3)]">{currency}</span>
       </div>
       
-      <div className="flex items-center justify-between text-muted-foreground group-hover:text-white transition-colors relative z-10">
+      <div className="flex items-center justify-between text-muted-foreground group-hover:text-primary transition-colors relative z-10">
         <span className="text-xs font-medium">Get an Account</span>
         <ChevronRight className="w-4 h-4" />
       </div>
@@ -261,10 +261,10 @@ function FiatCard({ symbol, currency }: { symbol: string, currency: string }) {
 
 function TransactionItem({ icon: Icon, title, date, amount, status }: { icon: any, title: string, date: string, amount: string, status: string }) {
   return (
-    <div className="flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-colors cursor-pointer active:bg-white/10 border border-transparent hover:border-white/5">
+    <div className="flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-all duration-300 cursor-pointer active:bg-white/10 border border-transparent hover:border-primary/20 hover:shadow-[0_0_15px_-5px_rgba(129,140,248,0.2)]">
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#27272a] to-[#1c1c1e] flex items-center justify-center text-white shadow-sm border border-white/5">
-          <Icon className="w-5 h-5 drop-shadow" />
+        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#27272a] to-[#1c1c1e] flex items-center justify-center text-white shadow-[0_0_10px_rgba(0,0,0,0.5)] border border-white/5">
+          <Icon className="w-5 h-5 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]" />
         </div>
         <div>
           <div className="font-medium text-sm text-white/90">{title}</div>
@@ -272,7 +272,7 @@ function TransactionItem({ icon: Icon, title, date, amount, status }: { icon: an
         </div>
       </div>
       <div className="text-right">
-        <div className={cn("font-semibold text-sm drop-shadow-sm", amount.startsWith("+") ? "text-[#f472b6]" : "text-white")}>{amount}</div>
+        <div className={cn("font-semibold text-sm drop-shadow-sm", amount.startsWith("+") ? "text-[#f472b6] drop-shadow-[0_0_8px_rgba(244,114,182,0.4)]" : "text-white")}>{amount}</div>
         <div className="text-xs text-muted-foreground capitalize">{status}</div>
       </div>
     </div>
