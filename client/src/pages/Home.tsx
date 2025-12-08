@@ -171,7 +171,7 @@ export default function Home() {
       </div>
 
       {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-[#09090b]/95 backdrop-blur-xl border-t border-white/5 pb-8 pt-2 px-6 flex justify-between items-center z-50">
+      <nav className="absolute bottom-0 left-0 right-0 bg-[#09090b]/95 backdrop-blur-xl border-t border-white/5 pb-8 pt-2 px-6 flex justify-between items-center z-50">
         <NavItem icon={HomeIcon} label="Home" active />
         <NavItem icon={CreditCard} label="Card" />
         <div className="relative -top-5">
@@ -184,7 +184,7 @@ export default function Home() {
       </nav>
 
       {/* Home Indicator */}
-      <div className="fixed bottom-2 left-1/2 -translate-x-1/2 w-[130px] h-[5px] bg-white/30 rounded-full z-[60]" />
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[130px] h-[5px] bg-white/30 rounded-full z-[60]" />
     </div>
   );
 }
