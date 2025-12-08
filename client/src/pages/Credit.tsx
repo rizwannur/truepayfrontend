@@ -6,7 +6,7 @@ export default function Credit() {
   const [, setLocation] = useLocation();
 
   return (
-    <div className="h-full w-full bg-black text-foreground font-sans select-none overflow-hidden relative flex flex-col">
+    <div className="h-full w-full bg-obsidian-shiny text-foreground font-sans select-none overflow-hidden relative flex flex-col">
       <header className="sticky top-0 z-50 bg-black/80 backdrop-blur-lg border-b border-white/5 px-4 py-3 flex items-center gap-4 pt-12">
         <Button 
           variant="ghost" 

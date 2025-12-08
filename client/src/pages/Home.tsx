@@ -44,7 +44,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="h-full w-full bg-black text-foreground pb-28 font-sans select-none overflow-hidden relative">
+    <div className="h-full w-full bg-obsidian-shiny text-foreground pb-28 font-sans select-none overflow-hidden relative">
       
       {/* iOS Status Bar */}
       <div className="sticky top-0 z-[60] bg-black/80 backdrop-blur-md text-white px-6 pt-3 pb-2 flex justify-between items-center text-xs font-medium">
