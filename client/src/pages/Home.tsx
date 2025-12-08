@@ -77,17 +77,18 @@ export default function Home() {
         <main className="px-4 pt-4 space-y-6">
           
           {/* Verify Identity Card */}
-          <Card className="bg-[#1c1c1e] border-none p-4 flex items-center justify-between rounded-2xl">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#2c2c2e] flex items-center justify-center text-blue-400">
-                <ShieldCheck className="w-5 h-5" />
+          <Card className="bg-gradient-to-br from-[#1c1c1e] to-[#09090b] border border-white/5 p-4 flex items-center justify-between rounded-2xl shadow-[4px_4px_10px_rgba(0,0,0,0.5),-1px_-1px_2px_rgba(255,255,255,0.05)] relative overflow-hidden group">
+            <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="flex items-center gap-3 relative z-10">
+              <div className="w-10 h-10 rounded-full bg-[#2c2c2e] flex items-center justify-center text-blue-400 shadow-inner border border-white/5">
+                <ShieldCheck className="w-5 h-5 drop-shadow-md" />
               </div>
               <div>
-                <div className="font-semibold text-sm">Verify your identity</div>
-                <div className="text-xs text-red-400 font-medium">Unverified</div>
+                <div className="font-semibold text-sm drop-shadow-sm">Verify your identity</div>
+                <div className="text-xs text-red-400 font-medium drop-shadow-sm">Unverified</div>
               </div>
             </div>
-            <Button variant="outline" className="h-8 px-4 border-primary/50 text-primary hover:bg-primary/10 hover:text-primary rounded-lg text-xs font-semibold">
+            <Button variant="outline" className="h-8 px-4 border-primary/50 text-primary hover:bg-primary/10 hover:text-primary rounded-lg text-xs font-semibold relative z-10 shadow-[0_0_10px_rgba(var(--primary),0.2)]">
               Verify
             </Button>
           </Card>
@@ -204,15 +205,15 @@ function QuickAction({
     <div className="flex flex-col items-center gap-2 group cursor-pointer active:opacity-70 transition-opacity">
       <div className="relative">
         <div className={cn(
-          "w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-200",
+          "w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-200 border",
           variant === "primary" 
-            ? "bg-primary text-white shadow-[0_0_15px_-3px_var(--color-primary)]" 
-            : "bg-[#1c1c1e] text-white hover:bg-[#27272a]"
+            ? "bg-gradient-to-br from-primary to-primary/80 text-white border-white/20 shadow-[0_0_20px_-5px_var(--color-primary)]" 
+            : "bg-gradient-to-br from-[#27272a] to-[#18181b] text-white border-white/10 shadow-[4px_4px_10px_rgba(0,0,0,0.5),-1px_-1px_2px_rgba(255,255,255,0.05)] hover:border-white/20"
         )}>
-          <Icon className="w-6 h-6" strokeWidth={2} />
+          <Icon className="w-6 h-6 drop-shadow-md" strokeWidth={2} />
         </div>
         {badge && (
-          <div className="absolute -top-2 -right-2 bg-primary/20 text-[#a5b4fc] text-[10px] font-bold px-1.5 py-0.5 rounded-md border border-[#a5b4fc]/20 backdrop-blur-sm">
+          <div className="absolute -top-2 -right-2 bg-primary/20 text-[#a5b4fc] text-[10px] font-bold px-1.5 py-0.5 rounded-md border border-[#a5b4fc]/20 backdrop-blur-sm shadow-[0_0_10px_rgba(165,180,252,0.2)]">
             {badge}
           </div>
         )}
@@ -224,12 +225,12 @@ function QuickAction({
 
 function Banner({ icon: Icon, label, action }: { icon: any, label: string, action: React.ReactNode }) {
   return (
-    <Card className="bg-[#1c1c1e] border-none p-4 flex items-center justify-between rounded-xl active:scale-[0.98] transition-transform cursor-pointer hover:bg-[#27272a]">
+    <Card className="bg-gradient-to-br from-[#27272a] to-[#18181b] border border-white/5 p-4 flex items-center justify-between rounded-xl active:scale-[0.98] transition-transform cursor-pointer hover:border-white/10 shadow-[4px_4px_10px_rgba(0,0,0,0.5),-1px_-1px_2px_rgba(255,255,255,0.05)]">
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 rounded-lg bg-[#2c2c2e]/50 flex items-center justify-center text-primary">
-          <Icon className="w-5 h-5" />
+        <div className="w-8 h-8 rounded-lg bg-[#2c2c2e]/50 flex items-center justify-center text-primary shadow-inner">
+          <Icon className="w-5 h-5 drop-shadow" />
         </div>
-        <span className="text-sm font-medium text-white">{label}</span>
+        <span className="text-sm font-medium text-white drop-shadow-sm">{label}</span>
       </div>
       <div className="text-muted-foreground font-medium">
         {action}
@@ -240,15 +241,17 @@ function Banner({ icon: Icon, label, action }: { icon: any, label: string, actio
 
 function FiatCard({ symbol, currency }: { symbol: string, currency: string }) {
   return (
-    <Card className="bg-[#1c1c1e] border-none p-4 rounded-xl flex flex-col justify-between h-32 active:scale-[0.98] transition-transform cursor-pointer hover:bg-[#27272a] group">
-      <div className="flex items-center gap-3">
-        <div className="w-8 h-8 rounded-full bg-[#2c2c2e] flex items-center justify-center text-white font-serif italic text-lg">
+    <Card className="bg-gradient-to-br from-[#27272a] to-[#18181b] border border-white/5 p-4 rounded-xl flex flex-col justify-between h-32 active:scale-[0.98] transition-transform cursor-pointer hover:border-white/10 group shadow-[4px_4px_10px_rgba(0,0,0,0.5),-1px_-1px_2px_rgba(255,255,255,0.05)] relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full blur-2xl -mr-12 -mt-12 pointer-events-none group-hover:bg-white/10 transition-colors" />
+      
+      <div className="flex items-center gap-3 relative z-10">
+        <div className="w-8 h-8 rounded-full bg-[#2c2c2e] flex items-center justify-center text-white font-serif italic text-lg shadow-inner border border-white/5">
           {symbol}
         </div>
-        <span className="font-bold text-lg">{currency}</span>
+        <span className="font-bold text-lg drop-shadow-sm">{currency}</span>
       </div>
       
-      <div className="flex items-center justify-between text-muted-foreground group-hover:text-white transition-colors">
+      <div className="flex items-center justify-between text-muted-foreground group-hover:text-white transition-colors relative z-10">
         <span className="text-xs font-medium">Get an Account</span>
         <ChevronRight className="w-4 h-4" />
       </div>
@@ -258,18 +261,18 @@ function FiatCard({ symbol, currency }: { symbol: string, currency: string }) {
 
 function TransactionItem({ icon: Icon, title, date, amount, status }: { icon: any, title: string, date: string, amount: string, status: string }) {
   return (
-    <div className="flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-colors cursor-pointer active:bg-white/10">
+    <div className="flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-colors cursor-pointer active:bg-white/10 border border-transparent hover:border-white/5">
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-[#1c1c1e] flex items-center justify-center text-white">
-          <Icon className="w-5 h-5" />
+        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#27272a] to-[#1c1c1e] flex items-center justify-center text-white shadow-sm border border-white/5">
+          <Icon className="w-5 h-5 drop-shadow" />
         </div>
         <div>
-          <div className="font-medium text-sm">{title}</div>
+          <div className="font-medium text-sm text-white/90">{title}</div>
           <div className="text-xs text-muted-foreground">{date}</div>
         </div>
       </div>
       <div className="text-right">
-        <div className={cn("font-semibold text-sm", amount.startsWith("+") ? "text-[#f472b6]" : "text-white")}>{amount}</div>
+        <div className={cn("font-semibold text-sm drop-shadow-sm", amount.startsWith("+") ? "text-[#f472b6]" : "text-white")}>{amount}</div>
         <div className="text-xs text-muted-foreground capitalize">{status}</div>
       </div>
     </div>
