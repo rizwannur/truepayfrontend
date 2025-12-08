@@ -66,10 +66,18 @@
 }
 
 body {
-  @apply bg-background text-foreground font-sans antialiased;
-  /* Add subtle gradient background */
-  background-image: radial-gradient(circle at 50% 0%, hsl(239 84% 67% / 0.03), transparent 40%);
-  min-height: 100vh;
+  @apply bg-zinc-950 font-sans antialiased flex items-center justify-center min-h-screen p-4 md:p-8;
+  margin: 0;
+}
+
+#root {
+  @apply w-full max-w-[390px] h-[844px] bg-background relative shadow-2xl overflow-hidden;
+  /* iPhone 12/13/14 dimensions approximation */
+  
+  @media (min-width: 450px) {
+    border-radius: 44px;
+    box-shadow: 0 0 0 12px #1a1a1a, 0 20px 50px -10px rgba(0,0,0,0.5);
+  }
 }
 
 /* Custom Utilities */
