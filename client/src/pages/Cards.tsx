@@ -124,7 +124,12 @@ export default function Cards() {
                 <Check className="w-4 h-4 text-primary" />
                 <span>Priority Support</span>
               </div>
-              <Button className="w-full mt-2 bg-white text-black hover:bg-white/90 font-semibold shadow-[0_0_20px_rgba(255,255,255,0.2)]">Order Obsidian</Button>
+              <Button 
+                className="w-full mt-2 bg-white text-black hover:bg-white/90 font-semibold shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+                onClick={() => setLocation("/card-manage")}
+              >
+                Order Obsidian
+              </Button>
             </div>
           </div>
 

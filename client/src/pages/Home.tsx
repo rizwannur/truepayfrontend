@@ -177,7 +177,10 @@ export default function Home() {
              
              <div className="flex gap-4 overflow-x-auto pb-6 px-2 -mx-2 no-scrollbar snap-x snap-mandatory">
                 {/* Obsidian Card Preview */}
-                <div className="snap-center shrink-0 w-[280px] h-[170px] relative rounded-xl bg-[#0a0a0a] border border-white/10 shadow-[0_0_20px_rgba(129,140,248,0.25)] overflow-hidden group hover:scale-105 transition-transform duration-500 cursor-pointer hover:shadow-[0_0_30px_rgba(129,140,248,0.4)] hover:border-primary/30">
+                <div 
+                  className="snap-center shrink-0 w-[280px] h-[170px] relative rounded-xl bg-[#0a0a0a] border border-white/10 shadow-[0_0_20px_rgba(129,140,248,0.25)] overflow-hidden group hover:scale-105 transition-transform duration-500 cursor-pointer hover:shadow-[0_0_30px_rgba(129,140,248,0.4)] hover:border-primary/30"
+                  onClick={() => setLocation("/card-manage")}
+                >
                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')] opacity-30 mix-blend-overlay" />
                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
                    <div className="absolute top-4 left-5 right-5 flex justify-between items-start">

@@ -14,12 +14,14 @@ import Referral from "@/pages/Referral";
 import Credit from "@/pages/Credit";
 import Swap from "@/pages/Swap";
 import More from "@/pages/More";
+import CardManage from "@/pages/CardManage";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/cards" component={Cards} />
+      <Route path="/card-manage" component={CardManage} />
       <Route path="/deposit" component={Deposit} />
       <Route path="/send" component={Send} />
       <Route path="/earn" component={Earn} />
