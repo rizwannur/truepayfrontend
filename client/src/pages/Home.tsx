@@ -31,15 +31,27 @@ import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { useLocation } from "wouter";
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }));
+  const [titleSuffix, setTitleSuffix] = useState("Pay");
   const [, setLocation] = useLocation();
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }).replace(" AM", "").replace(" PM", ""));
     }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const words = ["Pay", "Bank", "Life"];
+    let i = 0;
+    const timer = setInterval(() => {
+      i = (i + 1) % words.length;
+      setTitleSuffix(words[i]);
+    }, 2000);
     return () => clearInterval(timer);
   }, []);
 
@@ -65,7 +77,21 @@ export default function Home() {
           <User className="w-6 h-6" />
         </Button>
         <div className="flex flex-col items-center text-center">
-          <h1 className="text-xl font-bold tracking-tight text-white drop-shadow-md mb-1">True Pay</h1>
+          <h1 className="text-xl font-bold tracking-tight text-white drop-shadow-md mb-1 flex items-center justify-center gap-1 min-w-[120px]">
+            True 
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={titleSuffix}
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -10, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="inline-block"
+              >
+                {titleSuffix}
+              </motion.span>
+            </AnimatePresence>
+          </h1>
           <p className="text-xs text-primary font-semibold tracking-wide leading-tight max-w-[240px] drop-shadow-[0_0_10px_rgba(129,140,248,0.6)]">
             The card that never declines
           </p>
