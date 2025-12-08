@@ -3,7 +3,6 @@ import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   ArrowLeft, 
   Search, 
@@ -79,16 +78,26 @@ export default function Send() {
       <main className="flex-1 overflow-y-auto no-scrollbar p-4 space-y-6">
         
         {/* Currency Tabs */}
-        <Tabs defaultValue="fiat" className="w-full" onValueChange={setActiveTab}>
-          <TabsList className="grid w-full grid-cols-2 bg-card/30 border border-white/5">
-            <TabsTrigger value="fiat" className="data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
-              <DollarSign className="w-4 h-4 mr-2" /> Fiat
-            </TabsTrigger>
-            <TabsTrigger value="crypto" className="data-[state=active]:bg-orange-500/20 data-[state=active]:text-orange-400">
-              <Bitcoin className="w-4 h-4 mr-2" /> Crypto
-            </TabsTrigger>
-          </TabsList>
-        </Tabs>
+        <div className="w-full bg-card/30 border border-white/5 rounded-lg p-1 grid grid-cols-2">
+           <button 
+             className={cn(
+               "flex items-center justify-center gap-2 py-2 rounded-md text-sm font-medium transition-all",
+               activeTab === "fiat" ? "bg-primary/20 text-primary shadow-sm" : "text-muted-foreground hover:text-white"
+             )}
+             onClick={() => setActiveTab("fiat")}
+           >
+             <DollarSign className="w-4 h-4" /> Fiat
+           </button>
+           <button 
+             className={cn(
+               "flex items-center justify-center gap-2 py-2 rounded-md text-sm font-medium transition-all",
+               activeTab === "crypto" ? "bg-orange-500/20 text-orange-400 shadow-sm" : "text-muted-foreground hover:text-white"
+             )}
+             onClick={() => setActiveTab("crypto")}
+           >
+             <Bitcoin className="w-4 h-4" /> Crypto
+           </button>
+        </div>
 
         {/* Search Bar */}
         <div className="relative group">
