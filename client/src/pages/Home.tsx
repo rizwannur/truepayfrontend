@@ -29,10 +29,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { useLocation } from "wouter";
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }));
+  const [, setLocation] = useLocation();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -173,8 +175,8 @@ export default function Home() {
 
       {/* Bottom Navigation */}
       <nav className="absolute bottom-0 left-0 right-0 bg-[#09090b]/95 backdrop-blur-xl border-t border-white/5 pb-8 pt-2 px-6 flex justify-between items-center z-50">
-        <NavItem icon={HomeIcon} label="Home" active />
-        <NavItem icon={CreditCard} label="Card" />
+        <NavItem icon={HomeIcon} label="Home" active onClick={() => setLocation("/")} />
+        <NavItem icon={CreditCard} label="Card" onClick={() => setLocation("/cards")} />
         <div className="relative -top-5">
            <div className="bg-primary rounded-full p-4 shadow-lg shadow-primary/30 border-4 border-black active:scale-95 transition-transform cursor-pointer">
               <Send className="w-6 h-6 text-white ml-0.5" />
@@ -279,9 +281,11 @@ function TransactionItem({ icon: Icon, title, date, amount, status }: { icon: an
   );
 }
 
-function NavItem({ icon: Icon, label, active }: { icon: any, label: string, active?: boolean }) {
+function NavItem({ icon: Icon, label, active, onClick }: { icon: any, label: string, active?: boolean, onClick?: () => void }) {
   return (
-    <button className={cn(
+    <button 
+      onClick={onClick}
+      className={cn(
       "flex flex-col items-center gap-1 w-16 transition-colors active:scale-95",
       active ? "text-primary" : "text-muted-foreground hover:text-white"
     )}>
