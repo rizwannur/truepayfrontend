@@ -64,7 +64,15 @@ export default function Home() {
         <Button variant="ghost" size="icon" className="rounded-full text-muted-foreground hover:text-white">
           <User className="w-6 h-6" />
         </Button>
-        <h1 className="text-lg font-bold tracking-tight">True Pay</h1>
+        <div className="flex flex-col items-center text-center">
+          <h1 className="text-lg font-bold tracking-tight">True Pay</h1>
+          <p className="text-[10px] text-muted-foreground font-medium leading-none max-w-[200px] mt-0.5">
+            the card that never declines
+          </p>
+          <p className="text-[10px] text-muted-foreground font-medium leading-none max-w-[200px]">
+            the bank that never freezes
+          </p>
+        </div>
         <div className="flex items-center gap-1">
           <Button variant="ghost" size="icon" className="rounded-full text-muted-foreground hover:text-white">
             <ScanLine className="w-6 h-6" />
