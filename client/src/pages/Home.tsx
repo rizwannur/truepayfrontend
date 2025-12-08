@@ -106,15 +106,15 @@ export default function Home() {
 
           {/* Quick Actions Grid */}
           <div className="grid grid-cols-4 gap-y-6 gap-x-2">
-            <QuickAction icon={Plus} label="Deposit" variant="primary" />
-            <QuickAction icon={ArrowRight} label="Send" />
-            <QuickAction icon={DollarSign} label="Earn" badge="New" />
-            <QuickAction icon={Users} label="P2P" />
+            <QuickAction icon={Plus} label="Deposit" variant="primary" onClick={() => setLocation("/deposit")} />
+            <QuickAction icon={ArrowRight} label="Send" onClick={() => setLocation("/send")} />
+            <QuickAction icon={DollarSign} label="Earn" badge="New" onClick={() => setLocation("/earn")} />
+            <QuickAction icon={Users} label="P2P" onClick={() => setLocation("/p2p")} />
             
-            <QuickAction icon={Heart} label="Referral" />
-            <QuickAction icon={Wallet} label="Credit" badge="New" />
-            <QuickAction icon={ArrowLeftRight} label="Swap" />
-            <QuickAction icon={LayoutGrid} label="More" />
+            <QuickAction icon={Heart} label="Referral" onClick={() => setLocation("/referral")} />
+            <QuickAction icon={Wallet} label="Credit" badge="New" onClick={() => setLocation("/credit")} />
+            <QuickAction icon={ArrowLeftRight} label="Swap" onClick={() => setLocation("/swap")} />
+            <QuickAction icon={LayoutGrid} label="More" onClick={() => setLocation("/more")} />
           </div>
 
           {/* Your Cards Section */}
@@ -270,15 +270,17 @@ function QuickAction({
   icon: Icon, 
   label, 
   variant = "default", 
-  badge 
+  badge,
+  onClick
 }: { 
   icon: any, 
   label: string, 
   variant?: "default" | "primary",
-  badge?: string
+  badge?: string,
+  onClick?: () => void
 }) {
   return (
-    <div className="flex flex-col items-center gap-2 group cursor-pointer active:opacity-70 transition-opacity">
+    <div className="flex flex-col items-center gap-2 group cursor-pointer active:opacity-70 transition-opacity" onClick={onClick}>
       <div className="relative">
         <div className={cn(
           "w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 border",
