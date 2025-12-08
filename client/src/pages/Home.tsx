@@ -207,18 +207,18 @@ function QuickAction({
         <div className={cn(
           "w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 border",
           variant === "primary" 
-            ? "bg-gradient-to-br from-primary to-primary/80 text-white border-white/20 shadow-[0_0_30px_-5px_var(--color-primary)]" 
-            : "bg-gradient-to-br from-[#27272a] to-[#18181b] text-white border-white/10 shadow-[0_0_15px_-3px_rgba(129,140,248,0.2),4px_4px_10px_rgba(0,0,0,0.5),-1px_-1px_2px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_-5px_rgba(129,140,248,0.4)] hover:border-primary/30"
+            ? "bg-gradient-to-br from-primary to-primary/80 text-white border-white/20 shadow-[0_0_35px_-5px_var(--color-primary)]" 
+            : "bg-gradient-to-br from-[#27272a] to-[#18181b] text-white border-primary/30 shadow-[0_0_20px_-2px_rgba(129,140,248,0.4),4px_4px_10px_rgba(0,0,0,0.5),-1px_-1px_2px_rgba(255,255,255,0.05)] hover:shadow-[0_0_30px_-2px_rgba(129,140,248,0.6)] hover:border-primary/60"
         )}>
-          <Icon className="w-6 h-6 drop-shadow-[0_0_8px_rgba(129,140,248,0.5)]" strokeWidth={2} />
+          <Icon className="w-6 h-6 drop-shadow-[0_0_10px_rgba(129,140,248,0.8)]" strokeWidth={2} />
         </div>
         {badge && (
-          <div className="absolute -top-2 -right-2 bg-primary/20 text-[#a5b4fc] text-[10px] font-bold px-1.5 py-0.5 rounded-md border border-[#a5b4fc]/20 backdrop-blur-sm shadow-[0_0_10px_rgba(165,180,252,0.4)]">
+          <div className="absolute -top-2 -right-2 bg-primary/20 text-[#a5b4fc] text-[10px] font-bold px-1.5 py-0.5 rounded-md border border-[#a5b4fc]/20 backdrop-blur-sm shadow-[0_0_15px_rgba(165,180,252,0.5)]">
             {badge}
           </div>
         )}
       </div>
-      <span className="text-xs font-medium text-muted-foreground group-hover:text-primary transition-colors drop-shadow-[0_0_8px_rgba(0,0,0,0.8)]">{label}</span>
+      <span className="text-xs font-medium text-muted-foreground group-hover:text-primary transition-colors drop-shadow-[0_0_8px_rgba(129,140,248,0.3)]">{label}</span>
     </div>
   );
 }
