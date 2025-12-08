@@ -117,6 +117,80 @@ export default function Home() {
             <QuickAction icon={LayoutGrid} label="More" />
           </div>
 
+          {/* Your Cards Section */}
+          <div className="space-y-4">
+             <div className="flex items-center justify-between px-1">
+               <h2 className="text-lg font-bold tracking-tight text-white drop-shadow-md">Your Cards</h2>
+               <Button variant="ghost" size="sm" className="h-6 text-xs text-primary hover:text-primary/80">View All</Button>
+             </div>
+             
+             <div className="flex gap-4 overflow-x-auto pb-6 px-2 -mx-2 no-scrollbar snap-x snap-mandatory">
+                {/* Obsidian Card Preview */}
+                <div className="snap-center shrink-0 w-[280px] h-[170px] relative rounded-xl bg-[#0a0a0a] border border-white/10 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)] overflow-hidden group hover:scale-105 transition-transform duration-500 cursor-pointer hover:shadow-[0_0_25px_rgba(129,140,248,0.3)] hover:border-primary/30">
+                   <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')] opacity-30 mix-blend-overlay" />
+                   <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
+                   <div className="absolute top-4 left-5 right-5 flex justify-between items-start">
+                      <div className="font-bold text-lg tracking-wider text-white/90">TRUEPAY</div>
+                      <div className="text-[10px] font-semibold tracking-widest text-white/50">OBSIDIAN</div>
+                   </div>
+                   <div className="absolute top-14 left-5 w-9 h-6 rounded bg-gradient-to-br from-yellow-200 to-yellow-600 opacity-80" />
+                   <div className="absolute bottom-4 left-5 space-y-0.5">
+                     <div className="text-sm font-mono tracking-widest text-white/80">•••• 8842</div>
+                     <div className="text-[10px] font-medium text-white/50 tracking-wider">JOHN DOE</div>
+                   </div>
+                   <div className="absolute bottom-4 right-5">
+                      <div className="flex -space-x-2">
+                        <div className="w-6 h-6 rounded-full bg-red-500/80 mix-blend-screen" />
+                        <div className="w-6 h-6 rounded-full bg-yellow-500/80 mix-blend-screen" />
+                      </div>
+                   </div>
+                </div>
+
+                {/* Carbon Card Preview */}
+                <div className="snap-center shrink-0 w-[280px] h-[170px] relative rounded-xl bg-[#1a1a1a] border border-white/10 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)] overflow-hidden group hover:scale-105 transition-transform duration-500 cursor-pointer hover:shadow-[0_0_25px_rgba(129,140,248,0.3)] hover:border-primary/30">
+                   <div className="absolute inset-0 bg-[radial-gradient(black_15%,transparent_16%)_0_0,radial-gradient(black_15%,transparent_16%)_8px_8px,radial-gradient(rgba(255,255,255,.1)_15%,transparent_20%)_0_1px,radial-gradient(rgba(255,255,255,.1)_15%,transparent_20%)_8px_9px] bg-[size:16px_16px] bg-[#282828] opacity-50" />
+                   <div className="absolute inset-0 bg-gradient-to-br from-black/40 to-transparent pointer-events-none" />
+                   <div className="absolute top-4 left-5 right-5 flex justify-between items-start">
+                      <div className="font-bold text-lg tracking-wider text-white/90">TRUEPAY</div>
+                      <div className="text-[10px] font-semibold tracking-widest text-white/50">CARBON</div>
+                   </div>
+                   <div className="absolute top-14 left-5 w-9 h-6 rounded bg-gradient-to-br from-gray-300 to-gray-500 opacity-80 shadow-inner" />
+                   <div className="absolute bottom-4 left-5 space-y-0.5">
+                     <div className="text-sm font-mono tracking-widest text-white/80">•••• 1234</div>
+                     <div className="text-[10px] font-medium text-white/50 tracking-wider">JOHN DOE</div>
+                   </div>
+                   <div className="absolute bottom-4 right-5">
+                      <div className="flex -space-x-2">
+                        <div className="w-6 h-6 rounded-full bg-white/20 backdrop-blur-sm border border-white/10" />
+                        <div className="w-6 h-6 rounded-full bg-white/20 backdrop-blur-sm border border-white/10" />
+                      </div>
+                   </div>
+                </div>
+
+                {/* Neon Card Preview */}
+                <div className="snap-center shrink-0 w-[280px] h-[170px] relative rounded-xl bg-black border border-primary/50 shadow-[0_0_20px_rgba(129,140,248,0.2)] overflow-hidden group hover:scale-105 transition-transform duration-500 cursor-pointer hover:shadow-[0_0_30px_rgba(129,140,248,0.5)]">
+                   <div className="absolute -inset-1 bg-gradient-to-r from-primary via-purple-500 to-pink-500 opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-1000" />
+                   <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')] opacity-10" />
+                   <div className="absolute inset-0 border-[2px] border-primary/30 rounded-xl shadow-[inset_0_0_15px_rgba(129,140,248,0.4)]" />
+                   <div className="absolute top-4 left-5 right-5 flex justify-between items-start z-10">
+                      <div className="font-bold text-lg tracking-wider text-white drop-shadow-[0_0_8px_rgba(129,140,248,0.8)]">TRUEPAY</div>
+                      <div className="text-[10px] font-semibold tracking-widest text-primary drop-shadow-[0_0_5px_rgba(129,140,248,0.8)]">NEON</div>
+                   </div>
+                   <div className="absolute top-14 left-5 w-9 h-6 rounded bg-gradient-to-br from-primary to-purple-600 shadow-[0_0_10px_rgba(129,140,248,0.6)]" />
+                   <div className="absolute bottom-4 left-5 space-y-0.5 z-10">
+                     <div className="text-sm font-mono tracking-widest text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">•••• 9999</div>
+                     <div className="text-[10px] font-medium text-white/70 tracking-wider">JOHN DOE</div>
+                   </div>
+                   <div className="absolute bottom-4 right-5 z-10">
+                      <div className="flex -space-x-2">
+                        <div className="w-6 h-6 rounded-full bg-primary/80 mix-blend-screen shadow-[0_0_8px_rgba(129,140,248,0.5)]" />
+                        <div className="w-6 h-6 rounded-full bg-pink-500/80 mix-blend-screen shadow-[0_0_8px_rgba(236,72,153,0.5)]" />
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+
           {/* Banners */}
           <div className="space-y-3">
             <Banner 
