@@ -81,17 +81,21 @@ export default function Home() {
           <User className="w-6 h-6" />
         </Button>
         <div className="flex flex-col items-center text-center">
-          <h1 className="text-xl font-bold tracking-tight text-white drop-shadow-md mb-1 flex items-center justify-center gap-1 min-w-[120px]">
-            True 
-            <span 
-              className={cn(
-                "inline-block transition-all duration-200",
-                isAnimating ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
-              )}
-            >
-              {titleSuffix}
-            </span>
-          </h1>
+          <div className="flex items-center justify-center mb-1">
+            <h1 className="text-xl font-bold tracking-tight text-white drop-shadow-md text-right">
+              True
+            </h1>
+            <div className="w-[45px] text-left">
+              <span 
+                className={cn(
+                  "text-xl font-bold tracking-tight text-white drop-shadow-md inline-block ml-1 transition-all duration-200",
+                  isAnimating ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
+                )}
+              >
+                {titleSuffix}
+              </span>
+            </div>
+          </div>
           <p className="text-xs text-primary font-semibold tracking-wide leading-tight max-w-[240px] drop-shadow-[0_0_10px_rgba(129,140,248,0.6)]">
             The card that never declines
           </p>
