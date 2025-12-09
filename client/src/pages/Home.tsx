@@ -164,7 +164,7 @@ export default function Home() {
             <QuickAction icon={Store} label="Merchant" onClick={() => setLocation("/merchant")} />
             
             <QuickAction icon={Heart} label="Referral" onClick={() => setLocation("/referral")} />
-            <QuickAction icon={Wallet} label="Credit" badge="New" onClick={() => setLocation("/credit")} />
+            <QuickAction icon={CreditCard} label="Cards" badge="New" onClick={() => setLocation("/cards")} />
             <QuickAction icon={ArrowLeftRight} label="Swap" onClick={() => setLocation("/swap")} />
             <QuickAction icon={LayoutGrid} label="More" onClick={() => setLocation("/more")} />
           </div>
