@@ -27,7 +27,7 @@ export default function MatrixBackground() {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
       ctx.fillRect(0, 0, width, height);
 
-      ctx.fillStyle = '#a855f7'; // Purple-500
+      ctx.fillStyle = '#d8b4fe'; // Purple-300 (lighter/brighter)
       ctx.font = '15px monospace';
 
       for (let i = 0; i < drops.length; i++) {
@@ -60,7 +60,7 @@ export default function MatrixBackground() {
   return (
     <canvas 
       ref={canvasRef} 
-      className="absolute inset-0 w-full h-full opacity-30"
+      className="absolute inset-0 w-full h-full opacity-60"
     />
   );
 }
