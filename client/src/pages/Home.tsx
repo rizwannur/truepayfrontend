@@ -142,7 +142,11 @@ export default function Home() {
                 <div className="text-xs text-red-400 font-medium drop-shadow-[0_0_5px_rgba(248,113,113,0.3)]">Unverified</div>
               </div>
             </div>
-            <Button variant="outline" className="h-8 px-4 border-primary/50 text-primary hover:bg-primary/10 hover:text-primary rounded-lg text-xs font-semibold relative z-10 shadow-[0_0_15px_rgba(129,140,248,0.3)]">
+            <Button 
+                variant="outline" 
+                className="h-8 px-4 border-primary/50 text-primary hover:bg-primary/10 hover:text-primary rounded-lg text-xs font-semibold relative z-10 shadow-[0_0_15px_rgba(129,140,248,0.3)]"
+                onClick={() => setLocation("/verify-identity")}
+            >
               Verify
             </Button>
           </Card>
