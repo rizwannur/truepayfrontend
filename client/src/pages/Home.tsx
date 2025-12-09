@@ -258,6 +258,7 @@ export default function Home() {
               icon={Calendar} 
               label="Flexible Repayment Schedule" 
               action={<ChevronRight className="w-5 h-5 text-muted-foreground" />} 
+              onClick={() => setLocation("/repayment-schedule")}
             />
           </div>
 
