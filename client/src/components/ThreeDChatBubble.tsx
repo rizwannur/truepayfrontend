@@ -5,6 +5,9 @@ import * as THREE from "three";
 
 function ChatBubbleModel() {
   const groupRef = useRef<THREE.Group>(null);
+  const dot1Ref = useRef<THREE.Mesh>(null);
+  const dot2Ref = useRef<THREE.Mesh>(null);
+  const dot3Ref = useRef<THREE.Mesh>(null);
 
   // Create a custom shape for the speech bubble including the tail
   const bubbleGeometry = useMemo(() => {
@@ -52,6 +55,31 @@ function ChatBubbleModel() {
       groupRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.15;
       groupRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.3) * 0.05;
     }
+
+    // Animate the dots (typing effect loop)
+    if (dot1Ref.current && dot2Ref.current && dot3Ref.current) {
+      const t = state.clock.elapsedTime * 5; // Speed of the loop
+      
+      // Calculate sine waves with offsets for each dot
+      const d1 = Math.sin(t) * 0.5 + 0.5; // 0 to 1
+      const d2 = Math.sin(t - 1) * 0.5 + 0.5;
+      const d3 = Math.sin(t - 2) * 0.5 + 0.5;
+
+      // Apply scaling based on the sine wave (pop effect)
+      // Base scale is 1, pop adds up to 0.4
+      dot1Ref.current.scale.setScalar(1 + d1 * 0.3);
+      dot2Ref.current.scale.setScalar(1 + d2 * 0.3);
+      dot3Ref.current.scale.setScalar(1 + d3 * 0.3);
+
+      // Adjust emission intensity for glowing pulse
+      const mat1 = dot1Ref.current.material as THREE.MeshStandardMaterial;
+      const mat2 = dot2Ref.current.material as THREE.MeshStandardMaterial;
+      const mat3 = dot3Ref.current.material as THREE.MeshStandardMaterial;
+
+      if (mat1) mat1.emissiveIntensity = 0.5 + d1 * 0.5;
+      if (mat2) mat2.emissiveIntensity = 0.5 + d2 * 0.5;
+      if (mat3) mat3.emissiveIntensity = 0.5 + d3 * 0.5;
+    }
   });
 
   return (
@@ -78,13 +106,13 @@ function ChatBubbleModel() {
 
         {/* The 3 Dots "..." - Make them pop out slightly */}
         <group position={[0, 0.2, 0.35]}> 
-          <Sphere args={[0.22, 32, 32]} position={[-0.7, 0, 0]}>
+          <Sphere ref={dot1Ref} args={[0.22, 32, 32]} position={[-0.7, 0, 0]}>
             <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={0.5} roughness={0.2} />
           </Sphere>
-          <Sphere args={[0.22, 32, 32]} position={[0, 0, 0]}>
+          <Sphere ref={dot2Ref} args={[0.22, 32, 32]} position={[0, 0, 0]}>
             <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={0.5} roughness={0.2} />
           </Sphere>
-          <Sphere args={[0.22, 32, 32]} position={[0.7, 0, 0]}>
+          <Sphere ref={dot3Ref} args={[0.22, 32, 32]} position={[0.7, 0, 0]}>
             <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={0.5} roughness={0.2} />
           </Sphere>
         </group>
