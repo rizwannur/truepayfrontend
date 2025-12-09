@@ -80,7 +80,7 @@ export default function Merchant() {
         {/* Revenue Header */}
         <div className="text-center space-y-1 py-2">
             <div className="text-sm text-muted-foreground font-medium uppercase tracking-wider">Revenue (Last 30 Days)</div>
-            <div className="text-4xl font-bold text-white tracking-tight flex items-center justify-center gap-2">
+            <div className="text-4xl font-bold text-white tracking-tight flex items-center justify-center gap-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]" style={{ textShadow: "0 4px 8px rgba(0,0,0,0.5), 0 0 20px rgba(129,140,248,0.4)" }}>
                 {currency === "USD" ? "$" : currency === "EUR" ? "€" : "£"}
                 {currency === "USD" ? "12,450.00" : currency === "EUR" ? "11,200.00" : "9,850.00"}
             </div>
