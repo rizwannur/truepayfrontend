@@ -27,7 +27,7 @@ import {
   Battery,
   Signal,
   MessageCircle,
-  Lightbulb
+  MessageSquare
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -302,20 +302,20 @@ export default function Home() {
             </div>
           </div>
 
-          {/* App Idea CTA */}
+          {/* Feedback CTA */}
           <div className="pt-2 pb-32">
             <Card className="bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border border-primary/20 p-5 rounded-2xl relative overflow-hidden">
                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none" />
                
                <div className="flex flex-col items-center text-center space-y-3 relative z-10">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20 shadow-[0_0_15px_rgba(129,140,248,0.3)]">
-                    <Lightbulb className="w-6 h-6 text-primary" />
+                    <MessageSquare className="w-6 h-6 text-primary" />
                   </div>
                   
                   <div className="space-y-1">
-                    <h3 className="font-bold text-white text-lg">Have an App idea?</h3>
+                    <h3 className="font-bold text-white text-lg">Have feedback?</h3>
                     <p className="text-sm text-muted-foreground max-w-[240px] mx-auto">
-                      We can help you build your dream application today.
+                      We'd love to hear your thoughts to make TruePay better.
                     </p>
                   </div>
 
@@ -323,7 +323,7 @@ export default function Home() {
                     className="w-full bg-white text-black hover:bg-gray-200 font-bold rounded-xl mt-2 shadow-[0_0_20px_rgba(255,255,255,0.2)] h-12"
                     onClick={() => {}}
                   >
-                    Start Building
+                    Share Feedback
                   </Button>
                </div>
             </Card>
