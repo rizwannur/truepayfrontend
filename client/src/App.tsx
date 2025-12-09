@@ -19,6 +19,7 @@ import SendAmount from "@/pages/SendAmount";
 import Profile from "@/pages/Profile";
 import Crypto from "@/pages/Crypto";
 import Merchant from "@/pages/Merchant";
+import MerchantSignup from "@/pages/MerchantSignup";
 import MerchantAnalytics from "@/pages/MerchantAnalytics";
 import MerchantCreateLink from "@/pages/MerchantCreateLink";
 import MerchantCreateSubscription from "@/pages/MerchantCreateSubscription";
@@ -39,6 +40,7 @@ function Router() {
       <Route path="/profile" component={Profile} />
       <Route path="/crypto" component={Crypto} />
       <Route path="/merchant" component={Merchant} />
+      <Route path="/merchant/signup" component={MerchantSignup} />
       <Route path="/merchant/analytics" component={MerchantAnalytics} />
       <Route path="/merchant/create-link" component={MerchantCreateLink} />
       <Route path="/merchant/create-subscription" component={MerchantCreateSubscription} />
