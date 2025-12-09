@@ -254,12 +254,6 @@ export default function Home() {
               action="$"
               onClick={() => setLocation("/deposit-crypto")}
             />
-            <Banner 
-              icon={Calendar} 
-              label="Flexible Repayment Schedule" 
-              action={<ChevronRight className="w-5 h-5 text-muted-foreground" />} 
-              onClick={() => setLocation("/repayment-schedule")}
-            />
           </div>
 
           {/* Fiat Accounts */}
