@@ -32,8 +32,7 @@ import {
   Tooltip 
 } from 'recharts';
 import { cn } from "@/lib/utils";
-// Import generated image
-import bitcoinImage from '@assets/generated_images/3d_golden_bitcoin_with_purple_glow.png';
+import ThreeDCoin from "@/components/ThreeDCoin";
 
 // Mock Data
 const PORTFOLIO = [
@@ -118,26 +117,17 @@ export default function Crypto() {
         {!selectedCoin ? (
            <div className="space-y-6">
                 {/* Hero 3D Bitcoin */}
-                <div className="relative h-[280px] w-full flex items-center justify-center overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-50" />
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(129,140,248,0.2)_0%,transparent_70%)] blur-3xl" />
+                <div className="relative h-[320px] w-full flex items-center justify-center overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-50 pointer-events-none" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(129,140,248,0.2)_0%,transparent_70%)] blur-3xl pointer-events-none" />
                     
-                    {/* Floating Animation Container */}
-                    <div className="relative w-48 h-48 animate-[float_6s_ease-in-out_infinite]">
-                        {/* Glow Effect */}
-                        <div className="absolute inset-0 bg-purple-500/30 blur-[60px] rounded-full animate-pulse" />
-                        
-                        {/* 3D Coin Image */}
-                        <img 
-                            src={bitcoinImage} 
-                            alt="3D Bitcoin" 
-                            className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(129,140,248,0.5)] animate-[spin_10s_linear_infinite]"
-                            style={{ animationDuration: '20s' }}
-                        />
+                    {/* 3D Coin Canvas */}
+                    <div className="relative w-full h-full z-10">
+                        <ThreeDCoin />
                     </div>
                     
                     {/* Stats Overlay */}
-                    <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-8 text-center">
+                    <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-8 text-center z-20 pointer-events-none">
                         <div>
                             <div className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Market Cap</div>
                             <div className="text-lg font-bold text-white">$2.4T</div>
