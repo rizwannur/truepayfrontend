@@ -306,7 +306,10 @@ export default function Home() {
         <NavItem icon={HomeIcon} label="Home" active onClick={() => setLocation("/")} />
         <NavItem icon={CreditCard} label="Card" onClick={() => setLocation("/cards")} />
         <div className="relative -top-5">
-           <div className="bg-primary rounded-full p-4 shadow-lg shadow-primary/30 border-4 border-black active:scale-95 transition-transform cursor-pointer">
+           <div 
+             className="bg-primary rounded-full p-4 shadow-lg shadow-primary/30 border-4 border-black active:scale-95 transition-transform cursor-pointer"
+             onClick={() => setLocation("/send")}
+           >
               <Send className="w-6 h-6 text-white ml-0.5" />
            </div>
         </div>
