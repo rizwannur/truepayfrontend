@@ -150,7 +150,7 @@ export default function Chat() {
                         <div className="relative">
                             <Avatar className="w-9 h-9 border border-white/10">
                                 <AvatarImage src={activeFriend?.avatar} />
-                                <AvatarFallback>{activeFriend?.name[0]}</AvatarFallback>
+                                <AvatarFallback>{activeFriend?.name?.[0]}</AvatarFallback>
                             </Avatar>
                             {activeFriend?.status === "online" && (
                                 <div className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-black" />
