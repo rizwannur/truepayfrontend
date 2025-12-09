@@ -246,7 +246,7 @@ export default function Cards() {
            </div>
         </div>
         <NavItem icon={LayoutGrid} label="Hub" />
-        <NavItem icon={User} label="Profile" />
+        <NavItem icon={User} label="Profile" onClick={() => setLocation("/profile")} />
       </nav>
 
       {/* Home Indicator */}
