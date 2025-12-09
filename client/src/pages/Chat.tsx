@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
+import ThreeDChatBubble from "@/components/ThreeDChatBubble";
 
 // Mock Data
 const FRIENDS = [
@@ -353,6 +354,11 @@ export default function Chat() {
             </header>
 
             <main className="flex-1 overflow-y-auto no-scrollbar p-4 space-y-4">
+                {/* 3D Chat Bubble Section */}
+                <div className="h-[180px] w-full flex items-center justify-center relative my-2">
+                    <ThreeDChatBubble />
+                </div>
+
                 <div className="relative">
                     <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                     <Input placeholder="Search chats..." className="pl-9 bg-[#1c1c1e] border-white/10 text-white rounded-xl h-11" />
