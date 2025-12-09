@@ -33,6 +33,7 @@ import {
 } from 'recharts';
 import { cn } from "@/lib/utils";
 import ThreeDCoin from "@/components/ThreeDCoin";
+import MatrixBackground from "@/components/MatrixBackground";
 
 // Mock Data
 const PORTFOLIO = [
@@ -117,7 +118,8 @@ export default function Crypto() {
         {!selectedCoin ? (
            <div className="space-y-6">
                 {/* Hero 3D Bitcoin */}
-                <div className="relative h-[320px] w-full flex items-center justify-center overflow-hidden">
+                <div className="relative h-[320px] w-full flex items-center justify-center overflow-hidden bg-black">
+                    <MatrixBackground />
                     <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-50 pointer-events-none" />
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(129,140,248,0.2)_0%,transparent_70%)] blur-3xl pointer-events-none" />
                     
