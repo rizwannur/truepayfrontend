@@ -27,6 +27,7 @@ export default function MerchantSignup() {
   const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }));
   
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [step, setStep] = useState(1); // 1: Personal, 2: Company, 3: Documents
 
   // Form State
@@ -66,9 +67,29 @@ export default function MerchantSignup() {
     // Simulate API upload
     setTimeout(() => {
       setIsSubmitting(false);
-      setLocation("/merchant"); // Redirect to dashboard
+      setIsSuccess(true);
     }, 2000);
   };
+
+  if (isSuccess) {
+    return (
+      <div className="h-full w-full bg-obsidian-shiny text-foreground font-sans select-none overflow-hidden relative flex flex-col items-center justify-center p-6">
+        <div className="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center mb-6 animate-in zoom-in duration-500">
+          <CheckCircle2 className="w-10 h-10 text-green-500" />
+        </div>
+        <h2 className="text-2xl font-bold text-white mb-2 text-center">Verification Submitted</h2>
+        <p className="text-muted-foreground text-center max-w-xs mb-8">
+          Your documents have been securely received. Our team will review them within 24 hours.
+        </p>
+        <Button 
+          className="w-full h-12 bg-white text-black hover:bg-gray-100 font-bold rounded-xl"
+          onClick={() => setLocation("/merchant")}
+        >
+          Go to Dashboard
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <div className="h-full w-full bg-obsidian-shiny text-foreground font-sans select-none overflow-hidden relative flex flex-col pb-8">
