@@ -22,7 +22,6 @@ import {
   AlertCircle
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import MatrixBackground from "@/components/MatrixBackground";
 
 export default function Merchant() {
   const [location, setLocation] = useLocation();
@@ -39,7 +38,6 @@ export default function Merchant() {
 
   return (
     <div className="h-full w-full bg-obsidian-shiny text-foreground pb-24 font-sans select-none overflow-hidden relative flex flex-col">
-      <MatrixBackground />
       
       {/* iOS Status Bar */}
       <div className="sticky top-0 z-[60] bg-black/80 backdrop-blur-md text-white px-6 pt-3 pb-2 flex justify-between items-center text-xs font-medium">
