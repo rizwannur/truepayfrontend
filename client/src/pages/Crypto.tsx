@@ -193,11 +193,17 @@ export default function Crypto() {
                 <div className="px-4 pb-4">
                     <div className="flex items-center justify-between mb-3 px-1">
                         <h2 className="text-lg font-bold text-white">Market</h2>
-                        <div className="flex gap-2">
-                             <Button variant="ghost" size="sm" className="h-6 w-6 p-0 rounded-full bg-white/5 hover:bg-white/10">
-                                 <Search className="w-3 h-3" />
-                             </Button>
-                        </div>
+                    </div>
+                    
+                    {/* Search Bar */}
+                    <div className="relative mb-4">
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                        <Input 
+                            placeholder="Search coins..." 
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="bg-card/20 border-white/5 pl-9 text-white placeholder:text-muted-foreground focus-visible:ring-primary/50"
+                        />
                     </div>
                     
                     <div className="space-y-2">
