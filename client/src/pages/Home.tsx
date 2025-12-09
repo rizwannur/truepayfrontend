@@ -303,7 +303,7 @@ export default function Home() {
           </div>
 
           {/* App Idea CTA */}
-          <div className="pt-2 pb-6">
+          <div className="pt-2 pb-32">
             <Card className="bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border border-primary/20 p-5 rounded-2xl relative overflow-hidden">
                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none" />
                
