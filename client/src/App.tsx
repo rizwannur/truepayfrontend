@@ -25,6 +25,7 @@ import MerchantCreateSubscription from "@/pages/MerchantCreateSubscription";
 import CreateAccount from "@/pages/CreateAccount";
 import DepositCrypto from "@/pages/DepositCrypto";
 import VerifyIdentity from "@/pages/VerifyIdentity";
+import Chat from "@/pages/Chat";
 
 function Router() {
   return (
@@ -44,6 +45,7 @@ function Router() {
       <Route path="/create-account/:currency" component={CreateAccount} />
       <Route path="/deposit-crypto" component={DepositCrypto} />
       <Route path="/verify-identity" component={VerifyIdentity} />
+      <Route path="/chat" component={Chat} />
       <Route path="/earn" component={Earn} />
       <Route path="/p2p" component={P2P} />
       <Route path="/referral" component={Referral} />

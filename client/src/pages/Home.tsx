@@ -25,7 +25,8 @@ import {
   ChevronRight,
   Wifi,
   Battery,
-  Signal
+  Signal,
+  MessageCircle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -314,7 +315,7 @@ export default function Home() {
               <Send className="w-6 h-6 text-white ml-0.5" />
            </div>
         </div>
-        <NavItem icon={LayoutGrid} label="Hub" />
+        <NavItem icon={MessageCircle} label="Chat" onClick={() => setLocation("/chat")} />
         <NavItem icon={User} label="Profile" onClick={() => setLocation("/profile")} />
       </nav>
 
