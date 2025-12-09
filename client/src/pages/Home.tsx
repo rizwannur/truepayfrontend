@@ -7,7 +7,7 @@ import {
   Plus, 
   ArrowRight, 
   DollarSign, 
-  Users, 
+  Store, // Changed from Users
   Heart, 
   Wallet, 
   ArrowLeftRight, 
@@ -161,7 +161,7 @@ export default function Home() {
             <QuickAction icon={Plus} label="Deposit" variant="primary" onClick={() => setLocation("/deposit")} />
             <QuickAction icon={ArrowRight} label="Send" onClick={() => setLocation("/send")} />
             <QuickAction icon={Bitcoin} label="Crypto" badge="Hot" onClick={() => setLocation("/crypto")} />
-            <QuickAction icon={Users} label="P2P" onClick={() => setLocation("/p2p")} />
+            <QuickAction icon={Store} label="Merchant" onClick={() => setLocation("/merchant")} />
             
             <QuickAction icon={Heart} label="Referral" onClick={() => setLocation("/referral")} />
             <QuickAction icon={Wallet} label="Credit" badge="New" onClick={() => setLocation("/credit")} />

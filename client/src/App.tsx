@@ -18,6 +18,10 @@ import CardManage from "@/pages/CardManage";
 import SendAmount from "@/pages/SendAmount";
 import Profile from "@/pages/Profile";
 import Crypto from "@/pages/Crypto";
+import Merchant from "@/pages/Merchant";
+import MerchantAnalytics from "@/pages/MerchantAnalytics";
+import MerchantCreateLink from "@/pages/MerchantCreateLink";
+import MerchantCreateSubscription from "@/pages/MerchantCreateSubscription";
 
 function Router() {
   return (
@@ -30,6 +34,10 @@ function Router() {
       <Route path="/send-amount" component={SendAmount} />
       <Route path="/profile" component={Profile} />
       <Route path="/crypto" component={Crypto} />
+      <Route path="/merchant" component={Merchant} />
+      <Route path="/merchant/analytics" component={MerchantAnalytics} />
+      <Route path="/merchant/create-link" component={MerchantCreateLink} />
+      <Route path="/merchant/create-subscription" component={MerchantCreateSubscription} />
       <Route path="/earn" component={Earn} />
       <Route path="/p2p" component={P2P} />
       <Route path="/referral" component={Referral} />
