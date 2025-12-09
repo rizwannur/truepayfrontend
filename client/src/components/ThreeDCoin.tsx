@@ -11,6 +11,8 @@ function CoinModel() {
     
     // Configure texture to center it
     texture.center.set(0.5, 0.5);
+    texture.rotation = -Math.PI / 2; // Fix sideways orientation
+    texture.repeat.set(0.65, 0.65); // Zoom in to remove padding
     
     useFrame((state, delta) => {
         if (meshRef.current) {
