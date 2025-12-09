@@ -15,6 +15,7 @@ import Credit from "@/pages/Credit";
 import Swap from "@/pages/Swap";
 import More from "@/pages/More";
 import CardManage from "@/pages/CardManage";
+import SendAmount from "@/pages/SendAmount";
 
 function Router() {
   return (
@@ -24,6 +25,7 @@ function Router() {
       <Route path="/card-manage" component={CardManage} />
       <Route path="/deposit" component={Deposit} />
       <Route path="/send" component={Send} />
+      <Route path="/send-amount" component={SendAmount} />
       <Route path="/earn" component={Earn} />
       <Route path="/p2p" component={P2P} />
       <Route path="/referral" component={Referral} />

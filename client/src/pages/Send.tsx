@@ -180,7 +180,10 @@ export default function Send() {
 
       {/* Floating Send Button */}
       <div className="absolute bottom-6 left-6 right-6">
-        <Button className="w-full h-12 bg-primary hover:bg-primary/90 text-white font-bold shadow-[0_0_20px_rgba(129,140,248,0.4)] rounded-xl flex items-center justify-center gap-2">
+        <Button 
+            className="w-full h-12 bg-primary hover:bg-primary/90 text-white font-bold shadow-[0_0_20px_rgba(129,140,248,0.4)] rounded-xl flex items-center justify-center gap-2"
+            onClick={() => setLocation(`/send-amount?type=${activeTab}`)}
+        >
           <SendIcon className="w-5 h-5" /> Send {activeTab === "fiat" ? "USD" : "Crypto"}
         </Button>
       </div>
