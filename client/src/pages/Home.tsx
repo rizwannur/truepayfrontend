@@ -262,8 +262,8 @@ export default function Home() {
 
           {/* Fiat Accounts */}
           <div className="grid grid-cols-2 gap-3">
-            <FiatCard symbol="€" currency="EUR" />
-            <FiatCard symbol="£" currency="GBP" />
+            <FiatCard symbol="€" currency="EUR" onClick={() => setLocation("/create-account/EUR")} />
+            <FiatCard symbol="£" currency="GBP" onClick={() => setLocation("/create-account/GBP")} />
           </div>
 
           {/* Transactions Section */}
@@ -375,9 +375,12 @@ function Banner({ icon: Icon, label, action }: { icon: any, label: string, actio
   );
 }
 
-function FiatCard({ symbol, currency }: { symbol: string, currency: string }) {
+function FiatCard({ symbol, currency, onClick }: { symbol: string, currency: string, onClick?: () => void }) {
   return (
-    <Card className="bg-gradient-to-br from-[#27272a] to-[#18181b] border border-white/5 p-4 rounded-xl flex flex-col justify-between h-32 active:scale-[0.98] transition-all duration-500 cursor-pointer hover:border-primary/30 group shadow-[0_0_15px_-3px_rgba(129,140,248,0.15),4px_4px_10px_rgba(0,0,0,0.5),-1px_-1px_2px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_-5px_rgba(129,140,248,0.3)] relative overflow-hidden">
+    <Card 
+      className="bg-gradient-to-br from-[#27272a] to-[#18181b] border border-white/5 p-4 rounded-xl flex flex-col justify-between h-32 active:scale-[0.98] transition-all duration-500 cursor-pointer hover:border-primary/30 group shadow-[0_0_15px_-3px_rgba(129,140,248,0.15),4px_4px_10px_rgba(0,0,0,0.5),-1px_-1px_2px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_-5px_rgba(129,140,248,0.3)] relative overflow-hidden"
+      onClick={onClick}
+    >
       <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl -mr-12 -mt-12 pointer-events-none group-hover:bg-primary/20 transition-colors" />
       
       <div className="flex items-center gap-3 relative z-10">

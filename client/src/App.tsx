@@ -22,6 +22,7 @@ import Merchant from "@/pages/Merchant";
 import MerchantAnalytics from "@/pages/MerchantAnalytics";
 import MerchantCreateLink from "@/pages/MerchantCreateLink";
 import MerchantCreateSubscription from "@/pages/MerchantCreateSubscription";
+import CreateAccount from "@/pages/CreateAccount";
 
 function Router() {
   return (
@@ -38,6 +39,7 @@ function Router() {
       <Route path="/merchant/analytics" component={MerchantAnalytics} />
       <Route path="/merchant/create-link" component={MerchantCreateLink} />
       <Route path="/merchant/create-subscription" component={MerchantCreateSubscription} />
+      <Route path="/create-account/:currency" component={CreateAccount} />
       <Route path="/earn" component={Earn} />
       <Route path="/p2p" component={P2P} />
       <Route path="/referral" component={Referral} />
