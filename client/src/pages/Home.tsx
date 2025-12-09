@@ -252,6 +252,7 @@ export default function Home() {
               icon={Lock} 
               label="Deposit Crypto to Unlock Liquidity" 
               action="$"
+              onClick={() => setLocation("/deposit-crypto")}
             />
             <Banner 
               icon={Calendar} 
@@ -359,9 +360,12 @@ function QuickAction({
   );
 }
 
-function Banner({ icon: Icon, label, action }: { icon: any, label: string, action: React.ReactNode }) {
+function Banner({ icon: Icon, label, action, onClick }: { icon: any, label: string, action: React.ReactNode, onClick?: () => void }) {
   return (
-    <Card className="bg-gradient-to-br from-[#27272a] to-[#18181b] border border-white/5 p-4 flex items-center justify-between rounded-xl active:scale-[0.98] transition-all duration-500 cursor-pointer hover:border-primary/30 shadow-[0_0_15px_-3px_rgba(129,140,248,0.15),4px_4px_10px_rgba(0,0,0,0.5),-1px_-1px_2px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_-5px_rgba(129,140,248,0.3)]">
+    <Card 
+      className="bg-gradient-to-br from-[#27272a] to-[#18181b] border border-white/5 p-4 flex items-center justify-between rounded-xl active:scale-[0.98] transition-all duration-500 cursor-pointer hover:border-primary/30 shadow-[0_0_15px_-3px_rgba(129,140,248,0.15),4px_4px_10px_rgba(0,0,0,0.5),-1px_-1px_2px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_-5px_rgba(129,140,248,0.3)]"
+      onClick={onClick}
+    >
       <div className="flex items-center gap-3">
         <div className="w-8 h-8 rounded-lg bg-[#2c2c2e]/50 flex items-center justify-center text-primary shadow-[0_0_10px_rgba(129,140,248,0.2)] border border-white/5">
           <Icon className="w-5 h-5 drop-shadow-[0_0_5px_rgba(129,140,248,0.5)]" />

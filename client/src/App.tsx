@@ -23,6 +23,7 @@ import MerchantAnalytics from "@/pages/MerchantAnalytics";
 import MerchantCreateLink from "@/pages/MerchantCreateLink";
 import MerchantCreateSubscription from "@/pages/MerchantCreateSubscription";
 import CreateAccount from "@/pages/CreateAccount";
+import DepositCrypto from "@/pages/DepositCrypto";
 
 function Router() {
   return (
@@ -40,6 +41,7 @@ function Router() {
       <Route path="/merchant/create-link" component={MerchantCreateLink} />
       <Route path="/merchant/create-subscription" component={MerchantCreateSubscription} />
       <Route path="/create-account/:currency" component={CreateAccount} />
+      <Route path="/deposit-crypto" component={DepositCrypto} />
       <Route path="/earn" component={Earn} />
       <Route path="/p2p" component={P2P} />
       <Route path="/referral" component={Referral} />
