@@ -17,8 +17,11 @@ import {
   CheckCheck,
   Signal,
   Wifi,
-  Battery
+  Battery,
+  DollarSign,
+  ChevronDown
 } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 
 // Mock Data
@@ -31,12 +34,19 @@ const FRIENDS = [
 ];
 
 const MESSAGES = [
-  { id: 1, sender: "them", text: "Hey! How are you doing?", time: "10:00 AM", status: "read" },
-  { id: 2, sender: "me", text: "I'm good, just working on the new update. How about you?", time: "10:05 AM", status: "read" },
-  { id: 3, sender: "them", text: "Pretty good! Just wanted to check if you received the transfer I sent yesterday.", time: "10:15 AM", status: "read" },
-  { id: 4, sender: "me", text: "Yes, I got it. Thanks! 🙏", time: "10:20 AM", status: "read" },
-  { id: 5, sender: "them", text: "Awesome. Let me know when we can meet up.", time: "10:25 AM", status: "read" },
-  { id: 6, sender: "them", text: "Hey, did you get the transfer?", time: "10:30 AM", status: "delivered" },
+  { id: 1, sender: "them", text: "Hey! How are you doing?", time: "10:00 AM", status: "read", type: "text" },
+  { id: 2, sender: "me", text: "I'm good, just working on the new update. How about you?", time: "10:05 AM", status: "read", type: "text" },
+  { id: 3, sender: "them", text: "Pretty good! Just wanted to check if you received the transfer I sent yesterday.", time: "10:15 AM", status: "read", type: "text" },
+  { id: 4, sender: "me", text: "Yes, I got it. Thanks! 🙏", time: "10:20 AM", status: "read", type: "text" },
+  { id: 5, sender: "them", text: "Awesome. Let me know when we can meet up.", time: "10:25 AM", status: "read", type: "text" },
+  { id: 6, sender: "them", text: "Hey, did you get the transfer?", time: "10:30 AM", status: "delivered", type: "text" },
+];
+
+const CRYPTO_OPTIONS = [
+  { symbol: "BTC", name: "Bitcoin", balance: "0.45", icon: "₿" },
+  { symbol: "ETH", name: "Ethereum", balance: "4.20", icon: "Ξ" },
+  { symbol: "USDT", name: "Tether", balance: "12450.00", icon: "$" },
+  { symbol: "SOL", name: "Solana", balance: "145.50", icon: "◎" },
 ];
 
 export default function Chat() {
@@ -46,6 +56,11 @@ export default function Chat() {
   const [messageInput, setMessageInput] = useState("");
   const [messages, setMessages] = useState(MESSAGES);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  
+  // Transfer State
+  const [isTransferOpen, setIsTransferOpen] = useState(false);
+  const [transferAmount, setTransferAmount] = useState("");
+  const [selectedCrypto, setSelectedCrypto] = useState(CRYPTO_OPTIONS[2]); // Default USDT
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -72,11 +87,31 @@ export default function Chat() {
       sender: "me",
       text: messageInput,
       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      status: "sent"
+      status: "sent",
+      type: "text"
     };
     
     setMessages([...messages, newMessage]);
     setMessageInput("");
+  };
+
+  const handleSendCrypto = () => {
+    if (!transferAmount) return;
+
+    const newMessage = {
+      id: messages.length + 1,
+      sender: "me",
+      text: `Sent ${selectedCrypto.symbol} ${transferAmount}`,
+      amount: transferAmount,
+      currency: selectedCrypto.symbol,
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      status: "sent",
+      type: "transfer"
+    };
+
+    setMessages([...messages, newMessage]);
+    setIsTransferOpen(false);
+    setTransferAmount("");
   };
 
   const activeFriend = FRIENDS.find(f => f.id === selectedChat);
@@ -149,27 +184,48 @@ export default function Chat() {
                             msg.sender === "me" ? "justify-end" : "justify-start"
                         )}
                     >
-                        <div 
-                            className={cn(
-                                "max-w-[75%] rounded-2xl px-4 py-2.5 text-sm relative shadow-sm",
-                                msg.sender === "me" 
-                                    ? "bg-primary text-white rounded-tr-none" 
-                                    : "bg-[#2c2c2e] text-white rounded-tl-none border border-white/5"
-                            )}
-                        >
-                            {msg.text}
-                            <div className={cn(
-                                "text-[10px] flex items-center justify-end gap-1 mt-1",
-                                msg.sender === "me" ? "text-white/70" : "text-muted-foreground"
-                            )}>
-                                {msg.time}
-                                {msg.sender === "me" && (
-                                    <span>
-                                        {msg.status === "read" ? <CheckCheck className="w-3 h-3 text-blue-200" /> : <Check className="w-3 h-3" />}
-                                    </span>
-                                )}
+                        {msg.type === "transfer" ? (
+                            <div className="bg-gradient-to-br from-[#1c1c1e] to-black border border-white/10 rounded-2xl p-1 max-w-[240px] shadow-lg">
+                                <div className="bg-primary/10 rounded-xl p-4 flex flex-col items-center gap-2 border border-primary/20">
+                                    <div className="text-xs text-primary font-bold uppercase tracking-wider">Transfer Sent</div>
+                                    <div className="text-2xl font-bold text-white tracking-tight flex items-baseline gap-1">
+                                        <span className="text-sm text-white/60">{msg.currency === "USDT" ? "$" : ""}</span>
+                                        {msg.amount}
+                                        <span className="text-sm text-white/60">{msg.currency}</span>
+                                    </div>
+                                    <div className="w-full h-px bg-primary/20 my-1" />
+                                    <div className="flex items-center gap-2 text-[10px] text-primary/80">
+                                        <CheckCheck className="w-3 h-3" /> Completed
+                                    </div>
+                                </div>
+                                <div className="px-3 py-2 flex justify-between items-center text-[10px] text-muted-foreground">
+                                    <span>{msg.time}</span>
+                                    <span>Transaction ID: #8842</span>
+                                </div>
                             </div>
-                        </div>
+                        ) : (
+                            <div 
+                                className={cn(
+                                    "max-w-[75%] rounded-2xl px-4 py-2.5 text-sm relative shadow-sm",
+                                    msg.sender === "me" 
+                                        ? "bg-primary text-white rounded-tr-none" 
+                                        : "bg-[#2c2c2e] text-white rounded-tl-none border border-white/5"
+                                )}
+                            >
+                                {msg.text}
+                                <div className={cn(
+                                    "text-[10px] flex items-center justify-end gap-1 mt-1",
+                                    msg.sender === "me" ? "text-white/70" : "text-muted-foreground"
+                                )}>
+                                    {msg.time}
+                                    {msg.sender === "me" && (
+                                        <span>
+                                            {msg.status === "read" ? <CheckCheck className="w-3 h-3 text-blue-200" /> : <Check className="w-3 h-3" />}
+                                        </span>
+                                    )}
+                                </div>
+                            </div>
+                        )}
                     </div>
                 ))}
                 <div ref={messagesEndRef} />
@@ -177,9 +233,74 @@ export default function Chat() {
 
             {/* Message Input */}
             <div className="p-3 bg-black/90 border-t border-white/10 backdrop-blur-lg flex items-center gap-3">
-                <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-white shrink-0">
-                    <ImageIcon className="w-6 h-6" />
-                </Button>
+                
+                {/* Send Crypto Trigger */}
+                <Dialog open={isTransferOpen} onOpenChange={setIsTransferOpen}>
+                    <DialogTrigger asChild>
+                        <Button variant="ghost" size="icon" className="text-primary hover:text-primary/80 hover:bg-primary/10 shrink-0">
+                            <DollarSign className="w-6 h-6" />
+                        </Button>
+                    </DialogTrigger>
+                    <DialogContent className="bg-[#1c1c1e] border-white/10 text-white sm:max-w-[350px] p-0 overflow-hidden gap-0 rounded-2xl">
+                        <DialogHeader className="p-4 bg-black/20 border-b border-white/5">
+                            <DialogTitle className="text-center">Send Crypto</DialogTitle>
+                        </DialogHeader>
+                        <div className="p-6 space-y-6">
+                            
+                            {/* Amount Input */}
+                            <div className="flex flex-col items-center gap-2">
+                                <div className="text-sm text-muted-foreground">Enter Amount</div>
+                                <div className="flex items-center justify-center gap-1">
+                                    <span className="text-3xl font-bold text-white/50">$</span>
+                                    <Input 
+                                        type="number" 
+                                        placeholder="0.00" 
+                                        className="text-4xl font-bold bg-transparent border-none p-0 h-auto w-[140px] text-center focus-visible:ring-0 placeholder:text-white/20 text-white"
+                                        value={transferAmount}
+                                        onChange={(e) => setTransferAmount(e.target.value)}
+                                        autoFocus
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Asset Selection */}
+                            <div className="space-y-2">
+                                <div className="text-xs font-medium text-muted-foreground ml-1">Asset</div>
+                                <div className="grid grid-cols-2 gap-2">
+                                    {CRYPTO_OPTIONS.map((crypto) => (
+                                        <div 
+                                            key={crypto.symbol}
+                                            className={cn(
+                                                "flex items-center gap-2 p-2 rounded-xl border cursor-pointer transition-all",
+                                                selectedCrypto.symbol === crypto.symbol 
+                                                    ? "bg-primary/20 border-primary/50" 
+                                                    : "bg-white/5 border-transparent hover:bg-white/10"
+                                            )}
+                                            onClick={() => setSelectedCrypto(crypto)}
+                                        >
+                                            <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-xs">
+                                                {crypto.icon}
+                                            </div>
+                                            <div className="text-xs font-bold">{crypto.symbol}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="text-[10px] text-center text-muted-foreground mt-2">
+                                    Balance: {selectedCrypto.balance} {selectedCrypto.symbol}
+                                </div>
+                            </div>
+
+                            <Button 
+                                className="w-full h-12 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl shadow-[0_0_20px_rgba(129,140,248,0.3)]"
+                                onClick={handleSendCrypto}
+                                disabled={!transferAmount}
+                            >
+                                Send Now
+                            </Button>
+                        </div>
+                    </DialogContent>
+                </Dialog>
+
                 <div className="flex-1 relative">
                     <Input 
                         value={messageInput}
