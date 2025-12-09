@@ -19,6 +19,7 @@ import {
   Gift,
   CreditCard,
   Send,
+  Bitcoin,
   Component,
   Home as HomeIcon,
   ChevronRight,
@@ -159,7 +160,7 @@ export default function Home() {
           <div className="grid grid-cols-4 gap-y-6 gap-x-2">
             <QuickAction icon={Plus} label="Deposit" variant="primary" onClick={() => setLocation("/deposit")} />
             <QuickAction icon={ArrowRight} label="Send" onClick={() => setLocation("/send")} />
-            <QuickAction icon={DollarSign} label="Earn" badge="New" onClick={() => setLocation("/earn")} />
+            <QuickAction icon={Bitcoin} label="Crypto" badge="Hot" onClick={() => setLocation("/crypto")} />
             <QuickAction icon={Users} label="P2P" onClick={() => setLocation("/p2p")} />
             
             <QuickAction icon={Heart} label="Referral" onClick={() => setLocation("/referral")} />
