@@ -3,7 +3,7 @@ import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
 import { Float, Environment } from '@react-three/drei';
 import * as THREE from 'three';
-import bitcoinTextureUrl from '@assets/generated_images/3d_golden_bitcoin_with_purple_glow.png';
+import bitcoinTextureUrl from '@assets/generated_images/golden_bitcoin_face_texture.png';
 
 function CoinModel() {
     const meshRef = useRef<THREE.Mesh>(null);
@@ -26,16 +26,16 @@ function CoinModel() {
             {/* Rotate 90deg on Z to make cylinder face 'forward' (it defaults to standing up on Y) */}
             <mesh ref={meshRef} rotation={[0, 0, Math.PI / 2]}> 
                 {/* RadiusTop, RadiusBottom, Height, RadialSegments */}
-                <cylinderGeometry args={[2.2, 2.2, 0.2, 64]} />
+                <cylinderGeometry args={[2.2, 2.2, 0.15, 64]} />
                 
-                {/* Material Index 0: Side (Rim) - Gold */}
-                <meshStandardMaterial attach="material-0" color="#fbbf24" metalness={0.9} roughness={0.2} />
+                {/* Material Index 0: Side (Rim) - Solid Gold with ridges effect via high metalness */}
+                <meshStandardMaterial attach="material-0" color="#FFD700" metalness={1} roughness={0.1} />
                 
-                {/* Material Index 1: Top Face - Texture */}
-                <meshStandardMaterial attach="material-1" map={texture} color="white" metalness={0.4} roughness={0.3} />
+                {/* Material Index 1: Top Face - Texture with Gold Tint */}
+                <meshStandardMaterial attach="material-1" map={texture} color="#FFD700" metalness={0.9} roughness={0.1} />
                 
-                {/* Material Index 2: Bottom Face - Texture */}
-                <meshStandardMaterial attach="material-2" map={texture} color="white" metalness={0.4} roughness={0.3} />
+                {/* Material Index 2: Bottom Face - Texture with Gold Tint */}
+                <meshStandardMaterial attach="material-2" map={texture} color="#FFD700" metalness={0.9} roughness={0.1} />
             </mesh>
         </Float>
     );
