@@ -19,7 +19,8 @@ import {
   Wifi,
   Battery,
   DollarSign,
-  ChevronDown
+  ChevronDown,
+  Lock
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
@@ -401,6 +402,15 @@ export default function Chat() {
                             </div>
                         </div>
                     ))}
+                </div>
+
+                <div className="mt-6 flex flex-col items-center justify-center gap-2 text-center opacity-60 pb-6">
+                    <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center mb-1 border border-white/5">
+                        <Lock className="w-3.5 h-3.5 text-muted-foreground" />
+                    </div>
+                    <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-widest">
+                        100% Private & Encrypted
+                    </p>
                 </div>
             </main>
         </>
